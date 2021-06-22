@@ -4,7 +4,7 @@
 
 -  double check dplyr/ggplot2 code
 
--change to standard sidebar layout, with inputs in sidebar (no shinydashboard needed)
+-  change to standard sidebar layout, with inputs in sidebar (no shinydashboard needed)
 
 
 # Rain-Forest-Data
