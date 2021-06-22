@@ -51,8 +51,11 @@ boxWhiskerCreate <- function(data_input, succession_stage_id, growth_form_id, di
     ))
   
   p <- ggplot(processed_data, aes(x=Treatment, y=log10(Seed_deposition_rate))) + 
-    geom_boxplot()+geom_boxplot(fill='#A4A4A4', color="black")+
-    theme_classic()+ ylab('Seed_deposition_rate/m2')+xlab('Restoration treatment')
+    geom_boxplot()+
+    geom_boxplot(fill='#A4A4A4', color="black")+
+    theme_classic()+ 
+    ylab('Deposition rate (m-2 yr-1')+
+    xlab('Restoration treatment')
   
  return(p)
 } 
