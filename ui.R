@@ -28,3 +28,25 @@ dashboardPage(
   
   
   )
+
+
+#New layout should basically be the following 
+#(without the ui object since this is a 2-file app)
+# ui <- fluidPage(
+#   
+#   titlePanel("Seed Deposition by Restoration Treatment"),
+#   
+#   sidebarLayout(
+#     
+#     sidebarPanel(
+#       sliderInput(
+#         "bins", label = "Number of bins:",
+#         min = 1, value = 30, max = 50
+#       )
+#     ),
+#     
+#     mainPanel(
+#       plotOutput("distPlot")
+#     )
+#   )
+# )
