@@ -3,7 +3,7 @@ boxWhiskerTab <- tabItem(
   tabName ='boxWhiskers',
   fluidRow(
     box(
-      h1('Seed Dispersal'),
+      h1('Seed Deposition'),
       'Use the dropdown menu to see the patterns 
       of seed dispersal by different categories. 
       Select "All" to gain an overall understanding 
@@ -23,7 +23,7 @@ boxWhiskerTab <- tabItem(
                   selected=c('All'))
     ),
     box(
-      h1('Seed Dispersal by Restoration Treatment '),
+      h1('Seed Deposition by Restoration Treatment '),
       plotOutput('boxWhiskerRender') # receives box whisker plot that server sent
       
     )
