@@ -1,6 +1,7 @@
 #boxWhiskerTab
 boxWhiskerTab <- tabItem(
   tabName ='boxWhiskers',
+  #put each box in its own fluidRow to make them stack instead of side by side
   fluidRow(
     box(
       h1('Seed Deposition'),
@@ -21,7 +22,10 @@ boxWhiskerTab <- tabItem(
                   label=  'Dispersal mode',
                   choices=c('All', 'Animal-dispersed' , 'Wind-dispersed'),
                   selected=c('All'))
-    ),
+    )
+    
+  ),
+  fluidRow(
     box(
       h1('Seed Deposition by Restoration Treatment '),
       plotOutput('boxWhiskerRender') # receives box whisker plot that server sent
