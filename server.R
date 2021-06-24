@@ -1,9 +1,8 @@
 library(tidyverse)
-library(ggplot2)
-library(shinydashboard)
 
-
-source('boxWhiskerGenerate.R')
+#this one can be deleted once the next one is working
+#source('boxWhiskerGenerate.R')
+source('colPlotGenerate.R')
 
 getData <- function(pathToFile) {
   data <- read_csv(pathToFile)
@@ -16,10 +15,9 @@ server <- function(input, output) {
     getData('Islas_seedRain_trapLevel.csv')
   })
   
-  
-  # sends the box whisker plots to UI
-  output$boxWhiskerRender <- renderPlot({
-    boxWhiskerCreate( # creates the box whisker plots
+  # sends the column plots to UI
+  output$colPlotRender <- renderPlot({
+    colPlotCreate( # creates the box whisker plots
       dataInput(),
       input$succession_stage_id,
       input$growth_form_id,
