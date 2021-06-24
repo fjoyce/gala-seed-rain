@@ -1,0 +1,98 @@
+---
+title: "seed_rain_plots"
+author: "Francis Joyce"
+date: "6/22/2021"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+```{r}
+library(tidyverse)
+library(plotrix)
+library(scales)
+```
+
+```{r}
+seed_rain_data <- read_csv("Islas_seedRain_trapLevel.csv")
+
+seed_rain_data_to_plot <- seed_rain_data %>% 
+  select(Site, Treatment, Plot,Trap, Growthform, Dispersalmode, SuccessionalStage, seedsSum, Seed_deposition_rate) %>% 
+#rename tree categories to just "Tree"
+    mutate(Growthform=replace(Growthform, Growthform=='CT', 'Tree')) %>%
+    mutate(Growthform=replace(Growthform, Growthform=='CP', 'Tree')) %>%
+    mutate(Growthform=replace(Growthform, Growthform=='UT', 'Tree')) %>%
+    mutate(Growthform=replace(Growthform, Growthform=='UP', 'Tree')) %>%
+    mutate(Growthform=replace(Growthform, Growthform=='ET', 'Tree')) %>% 
+  #rename treatments
+  mutate(Treatment = factor(
+      Treatment,
+      levels=c('C', 'I', 'P', 'R'),
+      labels=c('Nat_reg', 'App_nuc', 'Plantation', 'Ref_for')
+    )) %>% 
+  #test filter to see if pattern is as expected
+  filter(SuccessionalStage == 'Late') %>% 
+  filter(Growthform == 'Tree')
+
+```
+
+```{r}
+##test code before using in function
+overall_dep_rate <- seed_rain_data_to_plot %>% 
+  #first just get overall seed deposition rates (all species) for each trap
+  group_by(Site,Treatment, Plot, Trap) %>% 
+  summarize(trap_dep_rate = sum(Seed_deposition_rate))
+
+#then take means by treatment
+mean_se <- overall_dep_rate %>% 
+    group_by(Treatment) %>% 
+    summarize(mean_dep_rate = mean(trap_dep_rate), 
+              SE = std.error(trap_dep_rate))
+
+p <- ggplot(mean_se, aes(x = Treatment, y = mean_dep_rate)) +
+  geom_col() +
+  geom_col(fill = '#368000', color = "#368000") +
+  geom_errorbar(aes(ymin = mean_dep_rate - SE,
+                    ymax = mean_dep_rate + SE)) +
+  #theme_classic()+
+  scale_y_log10(
+    breaks = function(x) {
+      brks <- extended_breaks(Q = c(1, 5))(log10(x))
+      10 ^ (brks[brks %% 1 == 0])
+    },
+    labels = math_format(format = log10)
+  ) +
+  ylab(expression(Deposition ~ rate ~ (m ^ -2 ~ yr ^ -1))) +
+  xlab('Restoration treatment')
+
+p
+
+
+```
+
+```{r}
+plotCreate <- function(data_input, succession_stage_id, growth_form_id, dispersal_mode_id ) {
+  
+  print(data_input)
+  
+  processed_data <- data_input
+  
+  # renaming the treatment groups to their actual names
+  processed_data <- processed_data %>%
+    mutate(Treatment = factor(
+      Treatment,
+      levels=c('C', 'I', 'P', 'R'),
+      labels=c('Nat_reg', 'App_nuc', 'Plantation', 'Ref_for')
+    ))
+  
+  mean_se <- processed_data %>% 
+    group_by(Treatment) %>% 
+    summarize(mean_seeds = mean(Seed_deposition_rate), SE =std.error(Seed_deposition_rate))
+  
+  
+}
+```
+
+
