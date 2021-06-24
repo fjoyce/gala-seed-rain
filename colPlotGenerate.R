@@ -57,7 +57,8 @@ colPlotCreate <- function(data_input, succession_stage_id, growth_form_id, dispe
               SE = std.error(trap_dep_rate))
   
   p <- ggplot(mean_se, aes(x = Treatment, y = mean_dep_rate)) +
-    geom_col(fill = '#0201FF') +
+    #JAE graph color is #0201FF 
+    geom_col(fill = '#20618D') + 
     geom_errorbar(aes(ymin = mean_dep_rate - SE,
                       ymax = mean_dep_rate + SE)) +
     theme_cowplot()+
