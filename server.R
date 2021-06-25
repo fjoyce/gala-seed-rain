@@ -1,7 +1,5 @@
 library(tidyverse)
 
-#this one can be deleted once the next one is working
-#source('boxWhiskerGenerate.R')
 source('colPlotGenerate.R')
 
 getData <- function(pathToFile) {
