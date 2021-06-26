@@ -27,9 +27,9 @@ colPlotCreate <- function(data_input, succession_stage_id, growth_form_id, dispe
     mutate(Growthform=replace(Growthform, Growthform == 'Shrub', 'Arbusto')) %>% 
     mutate(Dispersalmode=replace(Dispersalmode, Dispersalmode == 'Animal-dispersed', 'Animales')) %>%
     mutate(Dispersalmode=replace(Dispersalmode, Dispersalmode == 'Wind-dispersed', 'Viento')) %>% 
-    mutate(SuccessionalState=replace(SuccessionalStage, SuccessionalStage == 'Both', 'Ambas')) %>% 
-    mutate(SuccessionalState=replace(SuccessionalStage, SuccessionalStage == 'Early', 'Temprana')) %>%
-    mutate(SuccessionalState=replace(SuccessionalStage, SuccessionalStage == 'Late', 'Tardia'))
+    mutate(SuccessionalStage=replace(SuccessionalStage, SuccessionalStage == 'Both', 'Ambas')) %>% 
+    mutate(SuccessionalStage=replace(SuccessionalStage, SuccessionalStage == 'Early', 'Temprana')) %>%
+    mutate(SuccessionalStage=replace(SuccessionalStage, SuccessionalStage == 'Late', 'Tardia'))
     
   
   #the following conditionals filter by 
