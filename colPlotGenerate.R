@@ -81,7 +81,7 @@ colPlotCreate <- function(data_input, succession_stage_id, growth_form_id, dispe
     ) +
     ylab(expression(Deposicion ~ (semillas ~ m ^ -2 ~ a ^ -1))) +
     xlab('Tratamiento') +
-    labs(caption = "Las columnas son promedios con 1 error estandar de la media.")
+    labs(caption = "Columnas representan promedios con 1 error estandar de la media.")
   
   return(p)
 }
