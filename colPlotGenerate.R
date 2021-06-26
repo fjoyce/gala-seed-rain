@@ -79,7 +79,7 @@ colPlotCreate <- function(data_input, succession_stage_id, growth_form_id, dispe
       limits = c(10^0,10^4),
       labels = math_format(format = log10),
     ) +
-    ylab(expression(Tasa ~ de ~ deposicion ~ (semillas ~ m ^ -2 ~ a ^ -1))) +
+    ylab(expression(Deposicion ~ (semillas ~ m ^ -2 ~ a ^ -1))) +
     xlab('Tratamiento') +
     labs(caption = "Las columnas son promedios con 1 error estandar de la media.")
   
