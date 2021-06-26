@@ -1,8 +1,5 @@
 
-# Notes from Kyra:
-
-
-# Rain-Forest-Data
+# Notes from Kyra (out of date):
 
 Here are the files that you will need in order to get the app to work.
  If you need to edit the data here are some suggestions:
