@@ -15,30 +15,38 @@ colPlotCreate <- function(data_input, succession_stage_id, growth_form_id, dispe
     mutate(Treatment = factor(
       Treatment,
       levels=c('C', 'I', 'P', 'R'),
-      labels=c('Control', 'Island', 'Plantation', 'Ref. Forest')
+      labels=c('Control', 'Islas', 'Plantacion', 'Bosque ref.')
       )) %>% 
     #rename tree categories to just "Tree"
-    mutate(Growthform=replace(Growthform, Growthform=='CT', 'Tree')) %>%
-    mutate(Growthform=replace(Growthform, Growthform=='CP', 'Tree')) %>%
-    mutate(Growthform=replace(Growthform, Growthform=='UT', 'Tree')) %>%
-    mutate(Growthform=replace(Growthform, Growthform=='UP', 'Tree')) %>%
-    mutate(Growthform=replace(Growthform, Growthform=='ET', 'Tree'))
+    mutate(Growthform=replace(Growthform, Growthform == 'CT', 'Tree')) %>%
+    mutate(Growthform=replace(Growthform, Growthform == 'CP', 'Tree')) %>%
+    mutate(Growthform=replace(Growthform, Growthform == 'UT', 'Tree')) %>%
+    mutate(Growthform=replace(Growthform, Growthform == 'UP', 'Tree')) %>%
+    mutate(Growthform=replace(Growthform, Growthform == 'ET', 'Tree')) %>% 
+    mutate(Growthform=replace(Growthform, Growthform == 'Tree', 'Arbol')) %>% 
+    mutate(Growthform=replace(Growthform, Growthform == 'Shrub', 'Arbusto')) %>% 
+    mutate(Dispersalmode=replace(Dispersalmode, Dispersalmode == 'Animal-dispersed', 'Animales')) %>%
+    mutate(Dispersalmode=replace(Dispersalmode, Dispersalmode == 'Wind-dispersed', 'Viento')) %>% 
+    mutate(SuccessionalState=replace(SuccessionalStage, SuccessionalStage == 'Both', 'Ambas')) %>% 
+    mutate(SuccessionalState=replace(SuccessionalStage, SuccessionalStage == 'Early', 'Temprana')) %>%
+    mutate(SuccessionalState=replace(SuccessionalStage, SuccessionalStage == 'Late', 'Tardia'))
+    
   
   #the following conditionals filter by 
   #successional stage, growth form, and dispersal mode based on input
   #(i.e. if "All" is not selected )
-  if (succession_stage_id != 'All') {
+  if (succession_stage_id != 'Todas') {
     processed_data <- processed_data %>% 
       filter(str_detect(SuccessionalStage, succession_stage_id))
     
   }
-  if (growth_form_id != 'All') {
+  if (growth_form_id != 'Todas') {
     processed_data <- processed_data %>%
       filter(str_detect(Growthform, growth_form_id))
     
   }
   
-  if (dispersal_mode_id != 'All') {
+  if (dispersal_mode_id != 'Todos') {
     processed_data <- processed_data %>%
       filter(str_detect(Dispersalmode , dispersal_mode_id))
     
@@ -71,9 +79,9 @@ colPlotCreate <- function(data_input, succession_stage_id, growth_form_id, dispe
       limits = c(10^0,10^4),
       labels = math_format(format = log10),
     ) +
-    ylab(expression(Deposition ~ rate ~ (seeds ~ m ^ -2 ~ yr ^ -1))) +
-    xlab('Restoration treatment') +
-    labs(caption = "Bars show means. Error bars are 1 standard error of the mean.")
+    ylab(expression(Tasa ~ de ~ deposicion ~ (semillas ~ m ^ -2 ~ a ^ -1))) +
+    xlab('Tratamiento') +
+    labs(caption = "Las columnas son promedios con 1 error estandar de la media.")
   
   return(p)
 }

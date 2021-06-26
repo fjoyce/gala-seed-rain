@@ -8,7 +8,7 @@ library(scales)
 
 fluidPage(
   
-  titlePanel("Seed Deposition by Restoration Treatment"),
+  titlePanel("Deposición de semillas por tratamiento"),
   
   sidebarLayout(
     
@@ -20,20 +20,20 @@ fluidPage(
       # Select "All" to gain an understanding
       # of the overall pattern or specify a category to test
       # your hypothesis.',
-      tags$p("Use the dropdown menus to see the patterns of seed deposition by different categories of seeds. Select 'All' to gain an understanding of the overall pattern or specify particular categories to test your hypothesis."),
+      tags$p("Utilice los menús para visualizar los patrones de deposición de semillas por diferentes categorias de semillas. Seleccione 'Todos' para entender el patrón general o especifique categorias particulares para probar sus hipótesis."),
       
       selectInput(inputId='succession_stage_id',
-                  label='Successional Stage ',
-                  choices=c( 'All', 'Early', 'Both', 'Late'),
-                  selected=c('All')),
+                  label='Etapa sucesional ',
+                  choices=c( 'Todas', 'Temprana', 'Ambas', 'Tardia'),
+                  selected=c('Todas')),
       selectInput(inputId='growth_form_id',
-                  label= 'Growth form',
-                  choices=c('All', 'Tree','Shrub'),
-                  selected=c('All')),
+                  label= 'Forma de crecimiento',
+                  choices=c('Todas', 'Arbol','Arbusto'),
+                  selected=c('Todas')),
       selectInput(inputId='dispersal_mode_id',
-                  label=  'Dispersal mode',
-                  choices=c('All', 'Animal-dispersed' , 'Wind-dispersed'),
-                  selected=c('All'))
+                  label=  'Modo de dispersión',
+                  choices=c('Todos', 'Animales' , 'Viento'),
+                  selected=c('Todos'))
     ),
   
     mainPanel(width = 9,
