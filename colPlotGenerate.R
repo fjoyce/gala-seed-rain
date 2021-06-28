@@ -15,7 +15,7 @@ colPlotCreate <- function(data_input, succession_stage_id, growth_form_id, dispe
     mutate(Treatment = factor(
       Treatment,
       levels=c('C', 'I', 'P', 'R'),
-      labels=c('Control', 'Island', 'Plantation', 'Ref. Forest')
+      labels=c('Nat. reg.', 'App. nuc.', 'Plantation', 'Ref. for.')
       )) %>% 
     #rename tree categories to just "Tree"
     mutate(Growthform=replace(Growthform, Growthform=='CT', 'Tree')) %>%
@@ -62,8 +62,11 @@ colPlotCreate <- function(data_input, succession_stage_id, growth_form_id, dispe
     geom_col(fill = '#0201FF') + 
     geom_errorbar(aes(ymin = mean_dep_rate - SE,
                       ymax = mean_dep_rate + SE,
-                      width = 0.5)) +
+                      width = 0.2)) +
     theme_cowplot(font_size = 20) +
+    #scale_x_discrete(guide = guide_axis(angle = 45)) +
+    #can change the x-axis category label angle here if need be
+    guides(x =  guide_axis(angle = 0)) +
     scale_y_log10(
       breaks = function(x) {
         brks <- extended_breaks(Q = c(1,5))(log10(x))
