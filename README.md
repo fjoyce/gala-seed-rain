@@ -1,9 +1,3 @@
-# Notes to self 2021-06-21
-
--  Fonts on tick labels should be larger
--  make y axis limits static instead of dynamic (probably max = 10^4)
--  add caption saying that bars represent means and error bars are 1 SE
-
 
 # Rain-Forest-Data
 
