@@ -69,7 +69,8 @@ colPlotCreate <- function(data_input, succession_stage_id, growth_form_id, dispe
     #JAE graph color is #0201FF 
     geom_col(fill = '#0201FF') + 
     geom_errorbar(aes(ymin = mean_dep_rate - SE,
-                      ymax = mean_dep_rate + SE)) +
+                      ymax = mean_dep_rate + SE,
+                      width = 0.2)) +
     theme_cowplot(font_size = 20) +
     scale_y_log10(
       breaks = function(x) {
