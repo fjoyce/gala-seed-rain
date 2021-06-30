@@ -15,7 +15,7 @@ colPlotCreate <- function(data_input, succession_stage_id, growth_form_id, dispe
     mutate(Treatment = factor(
       Treatment,
       levels=c('C', 'I', 'P', 'R'),
-      labels=c('Reg. nat.', 'Nuc. apl.', 'Plantacion', 'Bosque ref.')
+      labels=c('Reg. nat.', 'Nuc. apl.', 'Plantaci\u00F3n', 'Bosque ref.')
       )) %>% 
     #rename tree categories to just "Tree"
     mutate(Growthform=replace(Growthform, Growthform == 'CT', 'Tree')) %>%
@@ -23,13 +23,13 @@ colPlotCreate <- function(data_input, succession_stage_id, growth_form_id, dispe
     mutate(Growthform=replace(Growthform, Growthform == 'UT', 'Tree')) %>%
     mutate(Growthform=replace(Growthform, Growthform == 'UP', 'Tree')) %>%
     mutate(Growthform=replace(Growthform, Growthform == 'ET', 'Tree')) %>% 
-    mutate(Growthform=replace(Growthform, Growthform == 'Tree', 'Arbol')) %>% 
+    mutate(Growthform=replace(Growthform, Growthform == 'Tree', '\u00C1rbol')) %>% 
     mutate(Growthform=replace(Growthform, Growthform == 'Shrub', 'Arbusto')) %>% 
     mutate(Dispersalmode=replace(Dispersalmode, Dispersalmode == 'Animal-dispersed', 'Animales')) %>%
     mutate(Dispersalmode=replace(Dispersalmode, Dispersalmode == 'Wind-dispersed', 'Viento')) %>% 
     mutate(SuccessionalStage=replace(SuccessionalStage, SuccessionalStage == 'Both', 'Ambas')) %>% 
     mutate(SuccessionalStage=replace(SuccessionalStage, SuccessionalStage == 'Early', 'Temprana')) %>%
-    mutate(SuccessionalStage=replace(SuccessionalStage, SuccessionalStage == 'Late', 'Tardia'))
+    mutate(SuccessionalStage=replace(SuccessionalStage, SuccessionalStage == 'Late', 'Tard\u00EDa'))
     
   
   #the following conditionals filter by 
@@ -81,9 +81,10 @@ colPlotCreate <- function(data_input, succession_stage_id, growth_form_id, dispe
       limits = c(10^0,10^4),
       labels = math_format(format = log10),
     ) +
-    ylab(expression(Deposicion ~ (semillas ~ m ^ -2 ~ a ^ -1))) +
+    ylab(expression("Deposici\u00F3n" ~ (semillas ~ m ^ -2 ~ "a\u00F1o" ^ -1))) +
     xlab('Tratamiento') +
-    labs(caption = "Columnas representan promedios con 1 error estandar de la media.")
+    labs(caption = 'Las columnas representan el promedio \u00b1 1 error est\u00e1ndar.', hjust = 0.5) +
+    theme(plot.caption = element_text(hjust = 0.5))
   
   return(p)
 }

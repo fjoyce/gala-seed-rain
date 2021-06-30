@@ -20,15 +20,15 @@ fluidPage(
       # Select "All" to gain an understanding
       # of the overall pattern or specify a category to test
       # your hypothesis.',
-      tags$p("Utilice los menús para visualizar los patrones de deposición de semillas por diferentes categorias de semillas. Seleccione 'Todos' para entender el patrón general o especifique categorias particulares para probar sus hipótesis."),
+      tags$p("Utiliza los menús para visualizar los patrones de deposición de semillas de diferentes categorías. Selecciona 'Todas' para entender el patrón general o especifica categorías particulares para probar tus hipótesis."),
       
       selectInput(inputId='succession_stage_id',
                   label='Etapa sucesional ',
-                  choices=c( 'Todas', 'Temprana', 'Ambas', 'Tardia'),
+                  choices=c( 'Todas', 'Temprana', 'Ambas', 'Tard\u00EDa'),
                   selected=c('Todas')),
       selectInput(inputId='growth_form_id',
                   label= 'Forma de crecimiento',
-                  choices=c('Todas', 'Arbol','Arbusto'),
+                  choices=c('Todas', '\u00C1rbol','Arbusto'),
                   selected=c('Todas')),
       selectInput(inputId='dispersal_mode_id',
                   label=  'Modo de dispersión',
