@@ -77,7 +77,8 @@ colPlotCreate <- function(data_input, succession_stage_id, growth_form_id, dispe
     ) +
     ylab(expression(Deposition ~ rate ~ (seeds ~ m ^ -2 ~ yr ^ -1))) +
     xlab('Restoration treatment') +
-    labs(caption = "Bars show means. Error bars are 1 standard error of the mean.")
+    labs(caption = "Bars show means. Error bars are 1 standard error of the mean.") +
+    theme(plot.caption = element_text(hjust = 0.5))
   
   return(p)
 }
